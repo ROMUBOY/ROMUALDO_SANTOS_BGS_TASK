@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Player_movement : MonoBehaviour
 {
     public float moveSpeed = 5f;  
-    private Rigidbody2D rb;       
+    private Rigidbody2D _rb;       
 
-    private Vector2 movement;     
+    private Vector2 _movement;     
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,19 +22,19 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {        
-        rb.velocity = movement * moveSpeed * Time.fixedDeltaTime;
+        _rb.velocity = _movement * moveSpeed * Time.fixedDeltaTime;
     }    
 
     void GetInput(){
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
+        _movement.x = Input.GetAxis("Horizontal");
+        _movement.y = Input.GetAxis("Vertical");
     }
 
     void SetDirection(){
-        if (movement.x > 0){
+        if (_movement.x > 0){
             transform.localScale = Vector3.one;
         }
-        else if (movement.x < 0){
+        else if (_movement.x < 0){
             transform.localScale = new Vector3(-1, 1, 1);
         }
     }
