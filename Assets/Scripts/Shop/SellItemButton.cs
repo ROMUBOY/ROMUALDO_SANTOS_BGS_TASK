@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
 
-public class ItemButton : MonoBehaviour
+public class SellItemButton : MonoBehaviour
 {
     public Item item;
     
@@ -17,7 +14,12 @@ public class ItemButton : MonoBehaviour
     void Start()
     {
         nameText.text = item.itemName;
-        priceText.text = $"{item.itemPrice} coins";
+        priceText.text = $"{item.itemPrice/2} coins";
         icon.sprite = item.itemIcon;
+    }
+
+    public void DestroyButton()
+    {
+        Destroy(this.gameObject);
     }
 }
