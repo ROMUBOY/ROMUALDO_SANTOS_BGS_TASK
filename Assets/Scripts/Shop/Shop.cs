@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,19 +10,24 @@ public class Shop : MonoBehaviour
     {
         if (playerInventory.items.Contains(itemToBuy))
         {
-            Debug.Log("Item já comprado");
+            Debug.Log("Item already in your inventory.");
+            return;
+        }
+
+        if(playerInventory.money < itemToBuy.itemPrice)
+        {
+            Debug.Log("Not enough money.");
             return;
         }
         
-        // Adicionar lógica de pagamento
-        playerInventory.AddItem(itemToBuy);
-        // Atualizar UI da loja
+        playerInventory.money -= itemToBuy.itemPrice;
+        playerInventory.AddItem(itemToBuy);        
     }
 
     public void SellItem(Item itemToSell)
     {
         playerInventory.RemoveItem(itemToSell);
-        // Adicionar lógica de pagamento
+        playerInventory.money += itemToSell.itemPrice / 2;
         // Atualizar UI da loja
     }
 }

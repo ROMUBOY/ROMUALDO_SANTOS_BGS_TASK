@@ -5,6 +5,8 @@ public class Inventory : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
 
+    public int money = 200;
+
     public void AddItem(Item newItem)
     {
         items.Add(newItem);
