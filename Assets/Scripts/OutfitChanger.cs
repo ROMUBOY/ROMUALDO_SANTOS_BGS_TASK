@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class OutfitChanger : MonoBehaviour
@@ -9,7 +10,24 @@ public class OutfitChanger : MonoBehaviour
     [Header("Sprites to Cycle Through")]
     public List<Sprite> options = new List<Sprite>();
 
+    public ItemType itemType;
+
+    public Inventory inventory;
+
     private int _currentOption = 0;
+    
+    void OnEnable()
+    {
+        options.Clear();        
+        
+        foreach (Item item in inventory.items)
+        {
+            if(item.itemType == itemType)
+            {
+                options.Add(item.itemIcon);
+            }            
+        }    
+    }
 
     public void NextOption()
     {
