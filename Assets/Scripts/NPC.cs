@@ -11,10 +11,10 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if (Input.GetButtonDown("Submit") && _canOpen)
-         {
-            OpenWindow();
-         }
+        if (Input.GetButtonDown("Submit") && _canOpen)
+        {
+           OpenWindow();
+        }
     }
     
     void OnTriggerEnter2D(Collider2D other)
