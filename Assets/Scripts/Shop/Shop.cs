@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
     public List<Item> shopItems = new List<Item>();
     public Inventory playerInventory;
+    public TMP_Text moneyText;
 
     public void BuyItem(Item itemToBuy)
     {
@@ -21,6 +23,7 @@ public class Shop : MonoBehaviour
         }
         
         playerInventory.money -= itemToBuy.itemPrice;
+        moneyText.text = $"{playerInventory.money} coins";
         playerInventory.AddItem(itemToBuy);        
     }
 
@@ -28,6 +31,6 @@ public class Shop : MonoBehaviour
     {
         playerInventory.RemoveItem(itemToSell);
         playerInventory.money += itemToSell.itemPrice / 2;
-        // Atualizar UI da loja
+        moneyText.text = $"{playerInventory.money} coins";        
     }
 }
