@@ -9,13 +9,11 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item newItem)
     {
-        items.Add(newItem);
-        // Atualizar UI do inventário
+        items.Add(newItem);        
     }
 
     public void RemoveItem(Item itemToRemove)
     {
-        items.Remove(itemToRemove);
-        // Atualizar UI do inventário
+        items.Remove(itemToRemove);        
     }
 }
